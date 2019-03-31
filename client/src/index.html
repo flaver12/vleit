@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>vLeit 0.0.2</title>
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="header text-center">
+        <h1>Virtuelle Leitstelle</h1>
+        <small>by flaver, Bane and jonas</small>
+    </div>
+    <div class="mode">
+      <div class="container">
+        <div class="columns">
+          <div class="column col-xs-6">
+            <h2>Willkommen!</h2>
+            <div class="text-left">
+              Wähle deine Rolle aus
+            </div>
+            <form class="selection-from">
+              <!-- form structure -->
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- gets displayed when logged in -->
+    <div class="content">
+      <h2 class="station-header"></h2>
+      <div class="container">
+        <div class="columns">
+          <div class="column col-xs-6 dyn-content">col-xs-6</div>
+          <div class="column col-xs-6">
+            <div class="map">
+              <img class="img-responsive" src="http://img.em-upload.de/images/2016/02/24/372c988eed68559df87e7e9e84b7a4a8.png" alt="lage_karte">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.dev.js"></script>
+  <!-- Simple inline scripts -->
+  <script>
+    console.log(require('electron').remote.getGlobal('wachen'));
+    //const wachen = require('electron').remote.getGlobal('wachen');
+    //TODO ask how we want to handel the station selection
+    const stations =
+      [
+        "Leitstelle",
+        "Rettungsdienst",
+        "Feuerwehr",
+        "Polizei"
+      ]
+    ;
+    const formElement = document.querySelector('.selection-from');
+    let innerHtml = '';
+    stations.forEach(element => {
+      innerHtml += `
+        <div class="form-group">
+          <div class="col-9 col-sm-12">
+            <label class="form-radio">
+              <input type="radio" name="wache" value="${element}">
+              <i class="form-icon"></i> ${element}
+            </label>
+          </div>
+        </div>`;
+    });
+    innerHtml += `<button class="btn btn-primary input-group-btn login-btn">Login</button>`;
+    formElement.innerHTML = innerHtml;
+  </script>
+  <script src="view.js"></script>
+</html>

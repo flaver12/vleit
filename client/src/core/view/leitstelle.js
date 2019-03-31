@@ -1,31 +1,5 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>VLST v0.0.1</title>
-    <style>
-      body {
-        background-color: #aeeeee;
-      }
-      .map {
-        float: right;
-        /* margin-top: -39px; */
-        position: relative;
-        /* margin: 11px auto; */
-        margin-top: -70px;
-        margin-right: 20px;
-      }
-      .tasks {
-        background-color: #BED3C5;
-        margin-top: 20px;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Virtuelle Leistelle</h1>
-    <div class="map">
-      <img src="http://img.em-upload.de/images/2016/02/24/372c988eed68559df87e7e9e84b7a4a8.png" alt="lage_karte">
-    </div>
+export function renderLeitstelle() {
+    return `
     <div class="task-creation">
       <form class="main-form">
           Stichwort: <br>
@@ -71,31 +45,33 @@
           <input type="text" name="location" class="location">
           <br>
           Wache:<br>
-          <select name="station" class="station-name">
-            <option disabled selected value> -- select an option -- </option>
-            <option value="RW 1">RW 1</option>
-            <option value="RW 2">RW 2</option>
-            <option value="RW 3">RW 3</option>
-            <option value="RW 4">RW 4</option>
-            <option value="RW 5">RW 5</option>
-            <option disabled selected value>------------------</option>
-            <option value="FuRW 1">FuRW 1</option>
-            <option value="FuRW 2">FuRW 2</option>
-            <option value="FFW 3">FFW 3</option>
-            <option value="FFW 4">FFW 4</option>
-            <option value="FFW 5">FFW 5</option>
-            <option value="FFW 6">FFW 6</option>
-            <option disabled selected value>------------------</option>
-            <option value="Pol 1">Pol 1</option>
-            <option value="Pol 2">Pol 2</option>
-            <option value="BePo">Bepo</option>
-            <option disabled selected value>------------------</option>
-            <option value="Stadtwerke">Stadtwerke</option>
-          </select>
+          <div class="form-group">
+          <div class="col-9 col-sm-12">
+            <label class="form-radio">
+              <input type="radio" name="wache" value="Rettungswache">
+              <i class="form-icon"></i>
+            </label>
+          </div>
+          </div>
+          <option value="RW 1">RW 1</option>
+          <option value="RW 2">RW 2</option>
+          <option value="RW 3">RW 3</option>
+          <option value="RW 4">RW 4</option>
+          <option value="RW 5">RW 5</option>
+          <option value="FuRW 1">FuRW 1</option>
+          <option value="FuRW 2">FuRW 2</option>
+          <option value="FFW 3">FFW 3</option>
+          <option value="FFW 4">FFW 4</option>
+          <option value="FFW 5">FFW 5</option>
+          <option value="FFW 6">FFW 6</option>
+          <option value="Pol 1">Pol 1</option>
+          <option value="Pol 2">Pol 2</option>
+          <option value="BePo">Bepo</option>
+          <option value="Stadtwerke">Stadtwerke</option>
           <br />
           <div class="vehicles"></div>
-          <input type="submit">
       </form>
+      <button class="btn btn-primary input-group-btn task-creation-btn">Login</button>
     </div>
     <div class="tasks">
       <table class="list">
@@ -109,6 +85,5 @@
           </tr>
         </table>
     </div>
-  </body>
-  <script src="index.js"></script>
-</html>
+    `;
+}
