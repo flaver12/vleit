@@ -70,8 +70,8 @@ export function renderLeitstelle() {
           <option value="Stadtwerke">Stadtwerke</option>
           <br />
           <div class="vehicles"></div>
+          <button class="btn btn-primary input-group-btn task-creation-btn">Login</button>
       </form>
-      <button class="btn btn-primary input-group-btn task-creation-btn">Login</button>
     </div>
     <div class="tasks">
       <table class="list">

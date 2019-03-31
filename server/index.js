@@ -19,15 +19,18 @@ io.on('connection', function(socket){
     socket.on('new-task', function(data) {
         console.log('new task dispatched');
         data.stations.forEach(station => {
-            console.log(station);
-            if(clients[station]) {
-                io.sockets.connected[clients[station].socket].emit("new-task-created", 'i am a new task!');
-            }
+            clients.forEach(element => {
+                if(element.stations.includes(station)) {
+                    io.sockets.connected[clients[element.uuid].socket].emit("new-task-created", 'i am a new task!');
+                }
+            });
         });
     });
 
-    socket.on('login', function(station) {
-        clients[station] = {
+    socket.on('login', function(object) {
+        clients[object.uuid] = {
+            "stations": object.stations,
+            "name": object.name,
             "socket": socket.id
         };
         console.log(clients);
@@ -35,11 +38,12 @@ io.on('connection', function(socket){
 
     socket.on('disconnect', function(){
         console.log('user disconnected');
-        for(var name in clients) {
-            if(clients[name].socket === socket.id) {
-                delete clients[name];
+        for(var uuid in clients) {
+            if(clients[uuid].socket === socket.id) {
+                delete clients[uuid];
                 break;
             }
         }
+        console.log(clients);
     });
 });

@@ -14,7 +14,9 @@ const handler = new JsonFileHandler();
 handler.loadFile('wachen.json', true);
 const content = handler.getContent();
 console.log(content);
+const uuidv1 = require('uuid/v1');
 global.wachen = content;
+global.uuid = uuidv1();
 
 const createWindow = () => {
   // Create the browser window.

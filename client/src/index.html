@@ -48,31 +48,57 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.dev.js"></script>
   <!-- Simple inline scripts -->
   <script>
-    console.log(require('electron').remote.getGlobal('wachen'));
+    const wachen = require('electron').remote.getGlobal('wachen').locations;
+
     //const wachen = require('electron').remote.getGlobal('wachen');
     //TODO ask how we want to handel the station selection
     const stations =
       [
-        "Leitstelle",
         "Rettungsdienst",
         "Feuerwehr",
         "Polizei"
       ]
     ;
     const formElement = document.querySelector('.selection-from');
-    let innerHtml = '';
+    let innerHtml = `      
+    <div class="form-group">
+      <div class="col-9 col-sm-12">
+        <button class="btn btn-primary input-group-btn loginlst-btn">Als Leitstelle anmelden</button>
+      </div>
+    </div>`;
+
     stations.forEach(element => {
-      innerHtml += `
-        <div class="form-group">
-          <div class="col-9 col-sm-12">
-            <label class="form-radio">
-              <input type="radio" name="wache" value="${element}">
-              <i class="form-icon"></i> ${element}
-            </label>
-          </div>
-        </div>`;
+
+      innerHtml+=`
+      <div class="form-group">
+        <div class="col-9 col-sm-12">
+          <b>${element}</b>
+        </div>
+      </div>`;
+
+      if(wachen[element]) {
+        wachen[element].forEach(station => {
+          innerHtml += `
+            <div class="form-group">
+              <div class="col-9 col-sm-12">
+                <div class="form-group">
+                  <label class="form-checkbox">
+                    <input type="checkbox" value="${station.id}" name="wache" data-role="${element}" data-station="${station.name}">
+                    <i class="form-icon"></i> ${station.name}
+                  </label>
+                </div>
+              </div>
+            </div> `;
+        });
+      } else {
+        innerHtml += `
+        <div class="toast toast-error">
+          Es wurde keine Wachen für die/der "${element}" erstellt!
+        </div>
+        `;
+      }
     });
-    innerHtml += `<button class="btn btn-primary input-group-btn login-btn">Login</button>`;
+    innerHtml += `<button class="btn btn-secondary input-group-btn login-btn">Login</button>`;
     formElement.innerHTML = innerHtml;
   </script>
   <script src="view.js"></script>

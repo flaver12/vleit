@@ -7,10 +7,10 @@ export class ConnetionHandler {
         });
     }
 
-    login(id) {
+    login(object) {
         //FAKE LOGIN
-        window.localStorage.setItem("station", id);
-        this.socket.emit('login', id);
+        window.localStorage.setItem("station", object);
+        this.socket.emit('login', object);
         return true;
     }
 }
