@@ -1,88 +1,194 @@
 export function renderLeitstelle() {
     return `
     <div class="task-creation">
-      <form class="main-form">
-          Stichwort: <br>
-          <select name="situation" class="situation">
-            <option disabled selected value> -- select an option -- </option>
-            <option value="Sturz">Sturz</option>
-            <option value="Schussverletzung">Schussverletzung</option>
-            <option value="Bewustlossigkeit">Bewustlossigkeit</option>
-            <option value="Alkoholintoxikation">Alkoholintoxikation</option>
-            <option value="Drogenintoxikation">Drogenintoxikation</option>
-            <option value="Einweisung">Einweisung</option>
-            <option value="OrgL-/LNA-Zubringer">OrgL-/LNA-Zubringer</option>
-            <option value="Hilfeleistung">Hilfeleistung</option>
-            <option value="RTH-Landeplatztransfer">RTH-Landeplatztransfer</option>
-            <option value="Sicherungswache / Sitzbereitschaft">Sicherungswache / Sitzbereitschaft</option>
-            <option  disabled selected value >------------------</option>
-            <option value="Zimmerbrand">Zimmerbrand</option>
-            <option value="Brand Wohnung">Brand Wohnung</option>
-            <option value="ausgelöste Brandmeldeanlage">ausgelöste Brandmeldeanlage</option>
-            <option value="Brand 3 in großer Ausdehnung oder mit Menschenleben in Gefahr">Brand 3 in großer Ausdehnung oder mit Menschenleben in Gefahr</option>
-            <option value="Großbrand">Großbrand</option>
-            <option value="Waldbrand">Waldbrand</option>
-            <option  disabled selected value >------------------</option>
-            <option value="Raub/Diebstahl">Raub/Diebstahl</option>
-            <option value="VU">VU</option>
-            <option value="EMA">EMA</option>
-            <option value="Amtshilfe">Amtshilfe</option>
-            <option value="Gewaltverbrechen">Gewaltverbrechen</option>
-            <option value="Banküberfall">Banküberfall</option>
-            <option value="Demo">Demo</option>
-            <option value="Sonderlage">Sonderlage</option>
-            <option  disabled selected value >------------------</option>
-            <option value="Massenunfall, Unfall mit Schienenfahrzeug">Massenunfall, Unfall mit Schienenfahrzeug</option>
-            <option value="PKW, eingeklemmte Person">PKW, eingeklemmte Person</option>
-            <option value="Radioaktive Stoffe">Radioaktive Stoffe</option>
-            <option value="chemische Stoffe">chemische Stoffe</option>
-            <option value="ManV5-20">ManV5-20</option>
-          </select><br>
-          Ergänzung:<br>
-          <textarea name="description" cols="30" rows="10" class="description"></textarea>
-          <br>
-          Örtlichkeit:<br>
-          <input type="text" name="location" class="location">
-          <br>
-          Wache:<br>
+      <form class="main-form selection-from">
           <div class="form-group">
-          <div class="col-9 col-sm-12">
-            <label class="form-radio">
-              <input type="radio" name="wache" value="Rettungswache">
-              <i class="form-icon"></i>
-            </label>
+            <label class="form-label" for="input-example-1">Stichwort</label>
+            <select class="form-select situation" name="situation">
+              <option disabled selected value> -- select an option -- </option>
+              <option value="Banküberfall">Banküberfall</option>
+              <option value="Bombenfund">Bombenfund</option>
+              <option value="BMA">BMA</option>
+              <option value="Brand">Brand</option>
+              <option value="Demo">Demo</option>
+              <option value="EMA">EMA</option>
+              <option value="Schadstoffe">Schadstoffe</option>
+              <option value="Gewaltverbrechen/Schlägerei">Gewaltverbrechen/Schlägerei</option>
+              <option value="MANV">MANV</option>
+              <option value="Raub/Diebstahl">Raub/Diebstahl</option>
+              <option value="RTW">RTW</option>
+              <option value="RTW+NEF">RTW+NEF</option>
+              <option value="Sonstiges">Sonstiges</option>
+            <option value="VU">VU</option>
+            </select>
           </div>
+          <div class="form-group">
+            <label class="form-label" for="input-example-1">Ergänzung</label>
+            <textarea class="form-input description" id="input-example-3" placeholder="Textarea" rows="3"></textarea>
           </div>
-          <option value="RW 1">RW 1</option>
-          <option value="RW 2">RW 2</option>
-          <option value="RW 3">RW 3</option>
-          <option value="RW 4">RW 4</option>
-          <option value="RW 5">RW 5</option>
-          <option value="FuRW 1">FuRW 1</option>
-          <option value="FuRW 2">FuRW 2</option>
-          <option value="FFW 3">FFW 3</option>
-          <option value="FFW 4">FFW 4</option>
-          <option value="FFW 5">FFW 5</option>
-          <option value="FFW 6">FFW 6</option>
-          <option value="Pol 1">Pol 1</option>
-          <option value="Pol 2">Pol 2</option>
-          <option value="BePo">Bepo</option>
-          <option value="Stadtwerke">Stadtwerke</option>
+          <div class="form-group">
+            <label class="form-label" for="input-example-1">Örtlichkeit</label>
+            <input class="form-input place" type="text" id="input-example-1" placeholder="Kino">
+          </div>
+          <div class="form-group">
+            <div class="col-9 col-sm-12">
+              <div class="form-group">
+                <label class="form-checkbox">
+                  <input type="checkbox" value="RW1" name="wache" class="station-select" data-role="Rettungsdienst">
+                  <i class="form-icon"></i> Rettungswache 1
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-9 col-sm-12">
+              <div class="form-group">
+                <label class="form-checkbox">
+                  <input type="checkbox" value="RW2" name="wache" class="station-select" data-role="Rettungsdienst">
+                  <i class="form-icon"></i> Rettungswache 2
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-9 col-sm-12">
+              <div class="form-group">
+                <label class="form-checkbox">
+                  <input type="checkbox" value="RW3" name="wache" class="station-select" data-role="Rettungsdienst">
+                  <i class="form-icon"></i> Rettungswache 3
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-9 col-sm-12">
+              <div class="form-group">
+                <label class="form-checkbox">
+                  <input type="checkbox" value="RW4" name="wache" class="station-select" data-role="Rettungsdienst">
+                  <i class="form-icon"></i> Rettungswache 4
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-9 col-sm-12">
+              <div class="form-group">
+                <label class="form-checkbox">
+                  <input type="checkbox" value="RW5" name="wache" class="station-select" data-role="Rettungsdienst">
+                  <i class="form-icon"></i> Rettungswache 5
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-9 col-sm-12">
+              <div class="form-group">
+                <label class="form-checkbox">
+                  <input type="checkbox" value="FuRW1" name="wache" class="station-select" data-role="Feuerwehr">
+                  <i class="form-icon"></i> Feuerwache 1
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-9 col-sm-12">
+              <div class="form-group">
+                <label class="form-checkbox">
+                  <input type="checkbox" value="FuRW2" name="wache" class="station-select" data-role="Feuerwehr">
+                  <i class="form-icon"></i> Feuerwache 2
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-9 col-sm-12">
+              <div class="form-group">
+                <label class="form-checkbox">
+                  <input type="checkbox" value="FFW3" name="wache" class="station-select" data-role="Feuerwehr">
+                  <i class="form-icon"></i> FFW 3
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-9 col-sm-12">
+              <div class="form-group">
+                <label class="form-checkbox">
+                  <input type="checkbox" value="FFW4" name="wache" class="station-select" data-role="Feuerwehr">
+                  <i class="form-icon"></i> FFW 4
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-9 col-sm-12">
+              <div class="form-group">
+                <label class="form-checkbox">
+                  <input type="checkbox" value="FFW5" name="wache" class="station-select" data-role="Feuerwehr">
+                  <i class="form-icon"></i> FFW 6
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-9 col-sm-12">
+              <div class="form-group">
+                <label class="form-checkbox">
+                  <input type="checkbox" value="FFW6" name="wache" class="station-select" data-role="Feuerwehr">
+                  <i class="form-icon"></i> FFW 6
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-9 col-sm-12">
+              <div class="form-group">
+                <label class="form-checkbox">
+                  <input type="checkbox" value="Pol1" name="wache" class="station-select" data-role="Polizei">
+                  <i class="form-icon"></i> Polizeiwache 1
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-9 col-sm-12">
+              <div class="form-group">
+                <label class="form-checkbox">
+                  <input type="checkbox" value="Pol2" name="wache" class="station-select" data-role="Polizei">
+                  <i class="form-icon"></i> Polizeiwache 2
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-9 col-sm-12">
+              <div class="form-group">
+                <label class="form-checkbox">
+                  <input type="checkbox" value="BePo" name="wache" class="station-select" data-role="Polizei">
+                  <i class="form-icon"></i> Bereitschaftspolizei
+                </label>
+              </div>
+            </div>
+          </div>
           <br />
           <div class="vehicles"></div>
           <button class="btn btn-primary input-group-btn task-creation-btn">Login</button>
       </form>
     </div>
     <div class="tasks">
-      <table class="list">
-          <tr>
-            <th>Stichwort</th>
-            <th>Ergänzung</th> 
-            <th>Örtlichkeit</th>
-            <th>Wache</th>
-            <th>Fahrzeuge</th>
-            <th>Status</th>
-          </tr>
+        <table class="table list">
+          <thead>
+            <tr>
+              <th>Stichwort</th>
+              <th>Ergänzung</th> 
+              <th>Örtlichkeit</th>
+              <th>Wache</th>
+              <th>Fahrzeuge</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
         </table>
     </div>
     `;

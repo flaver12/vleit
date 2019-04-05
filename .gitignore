@@ -62,4 +62,5 @@ typings/
 
 #custom
 client/node_modules
+server/out
 server/node_modules

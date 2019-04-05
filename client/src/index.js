@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, Menu } from 'electron';
 import { JsonFileHandler } from './core/config/JsonFileHandler';
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
@@ -39,6 +39,11 @@ const createWindow = () => {
     mainWindow = null;
   });
 
+  // setup menubar
+  const template = [];
+
+  const menu = Menu.buildFromTemplate(template);
+  Menu.setApplicationMenu(menu);
 };
 
 // This method will be called when Electron has finished
