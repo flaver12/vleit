@@ -1,8 +1,8 @@
 {
-  "name": "client",
-  "productName": "client",
+  "name": "vLeit",
+  "productName": "vLeit",
   "version": "1.0.0",
-  "description": "My Electron application description",
+  "description": "Virtuelle Leitstelle für Emergency 4",
   "main": "src/index.js",
   "scripts": {
     "start": "electron-forge start",
@@ -12,7 +12,7 @@
     "lint": "eslint src --color"
   },
   "keywords": [],
-  "author": "zerba",
+  "author": "Flavio Kleiber",
   "license": "MIT",
   "config": {
     "forge": {
