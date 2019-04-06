@@ -139,7 +139,8 @@ function render(role) {
             e.preventDefault();
 
             // create object
-            let task = {
+            let task = {};
+            task = {
                 stations: allSelectedStations,
                 vehicles: [],
                 situation: document.querySelector('.situation option:checked').value,
@@ -152,9 +153,14 @@ function render(role) {
             selectedVehicles.forEach(e => {
                 activeVehicleForTask += `${e.value} <br>`;
                 task.vehicles.push({station: e.getAttribute('data-station'), vehicle: e.value});
+                let vehicleTitle = document.querySelector(`.title-${e.getAttribute('data-station')}`);
+                if(vehicleTitle) {
+                    vehicleTitle.parentNode.removeChild(vehicleTitle);
+                }
             });
             task.taskId = uuidv4();
             // Add taskobject to the local first
+            console.log(task);
             addTask(task, activeVehicleForTask);
 
             onTaskSubmit(task);
@@ -169,6 +175,7 @@ function render(role) {
             document.querySelectorAll('.vehicle-base').forEach(vehicle => {
                 vehicle.parentNode.removeChild(vehicle);
             });
+            allSelectedStations = [];
         }
         return;
     }
